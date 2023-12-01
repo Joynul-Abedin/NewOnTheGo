@@ -15,11 +15,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      debugShowCheckedModeBanner: false, // Remove the debug banner
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('NewsOnTheGo'),
+          backgroundColor: Colors.black,
+          elevation: 0,
+          title: const Text('NewsOnTheGo', style: TextStyle(color: Colors.white),),
+          centerTitle: true,
         ),
-        body: const NewsList(),
+        body: Container(
+          color: Colors.black,
+            child: const NewsList()),
       ),
     );
   }
