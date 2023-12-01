@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'Views/NewsList.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize().then((InitializationStatus status) {
+    debugPrint('Initialization done: ${status.adapterStatuses}');
+    MobileAds.instance.updateRequestConfiguration(
+      RequestConfiguration(
+        testDeviceIds: <String>[
+          "GADSimulatorID",
+          "18abe969dce86abc61b0b6ff0fcf0a16"
+        ],
+      ),
+    );
+  });
   runApp(const MyApp());
 }
 
@@ -17,15 +30,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false, // Remove the debug banner
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.black,
-          elevation: 0,
-          title: const Text('NewsOnTheGo', style: TextStyle(color: Colors.white),),
-          centerTitle: true,
-        ),
-        body: Container(
-          color: Colors.black,
-            child: const NewsList()),
+        body: Container(color: Colors.black, child: const NewsList()),
       ),
     );
   }
