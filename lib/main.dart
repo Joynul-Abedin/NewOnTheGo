@@ -28,10 +28,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      debugShowCheckedModeBanner: false, // Remove the debug banner
-      home: Scaffold(
-        body: Container(color: Colors.black, child: const NewsList()),
-      ),
+      debugShowCheckedModeBanner: false,
+      home: const NewsList(),
     );
   }
 }
